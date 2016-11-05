@@ -1,3 +1,8 @@
 import React from 'react';
+import style from './test.less';
 
-export default () => <span>Hello Cocoweet</span>;
+export default () => (
+  <div className={style.main}>
+    <span className="foo">xyz</span>
+  </div>
+);

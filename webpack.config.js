@@ -23,7 +23,22 @@ export default {
       test: /\.js?$/,
       loaders: ['babel-loader'],
       include: path.join(__dirname, 'app')
-    }]
+    },
+    {
+      test: /\.(less|scss)$/,
+      loaders: [
+        'style-loader',
+        'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'postcss-loader'
+      ]
+    }
+    ]
+  },
+
+  postcss: () => {
+    return [
+      require('postcss-nested')
+    ];
   },
 
   plugins: [
