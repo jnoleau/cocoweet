@@ -1,11 +1,12 @@
+/* @flow */
 import 'babel-polyfill';
 
-import React, {Component} from 'react';
-import { render } from 'react-dom';
-import Test from 'cocoweet/components/test';
+import React, {Component, Element} from 'react';
+import {render} from 'react-dom';
+import Test from 'app/components/test';
 
-class App extends Component {
-  render() {
+class App extends Component { // eslint-disable-line react/prefer-stateless-function
+  render(): Element<*> {
     return <div><Test /></div>;
   }
 }

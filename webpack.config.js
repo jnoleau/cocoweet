@@ -35,11 +35,9 @@ export default {
     ]
   },
 
-  postcss: () => {
-    return [
-      require('postcss-nested')
-    ];
-  },
+  postcss: () => [
+    require('postcss-nested') // eslint-disable-line global-require
+  ],
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -51,7 +49,7 @@ export default {
 
   resolve: {
     alias: {
-      cocoweet: path.resolve('./app')
+      app: path.resolve('./app')
     }
   },
 
