@@ -1,0 +1,20 @@
+[ignore]
+
+[include]
+../node_modules/react
+../node_modules/react-dom
+../node_modules/babel-polyfill
+
+[libs]
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=.
+module.system.node.resolve_dirname=..
+
+module.name_mapper.extension='less' -> '<PROJECT_ROOT>/flow/AssetStub.js'
