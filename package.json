@@ -5,7 +5,8 @@
   "scripts": {
     "start": "NODE_ENV=development electron -r babel-register -r babel-polyfill ./index",
     "server": "node -r babel-register server.js",
-    "lintjs": "eslint"
+    "lintjs": "eslint app",
+    "lintcss": "stylelint app/**/*.less"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,8 @@
     "eslint-plugin-import": "1.16.0",
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.5.0",
-    "flow-bin": "0.34.0"
+    "flow-bin": "0.34.0",
+    "stylelint": "7.5.0",
+    "stylelint-config-standard": "14.0.0"
   }
 }
