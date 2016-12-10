@@ -30,6 +30,6 @@ export function tweetArray(nb: number): ApiTweetType[] {
   return result;
 }
 
-export function tweet(): ApiTweetType {
-  return tweetArray(1)[0];
+export function tweet(pos: number = 0): ApiTweetType {
+  return tweetArray(pos + 1)[pos];
 }

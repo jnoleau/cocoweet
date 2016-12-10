@@ -1,5 +1,5 @@
 // @flow
-import type {ApiTweetType, ApiTweetEntityUrlType} from 'app/api/index';
+import type {ApiTweetType, ApiTweetEntityUrlType, ApiTweetEntityMentionType} from 'app/api/index';
 
 import TwitterText from 'twitter-text';
 import Unicode from 'app/util/unicode';
@@ -12,7 +12,12 @@ export type TweetBodyEntity = {
   type: 'url',
   value: ApiTweetEntityUrlType,
   indices: [number, number]
+} | {
+  type: 'mention',
+  value: ApiTweetEntityMentionType,
+  indices: [number, number]
 };
+
 /**
  * Extract all entities including text.
  * The final result will represent the tweet text as pieces in the good
@@ -39,11 +44,16 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
         )
       );
     }
-    // const tweetEntities = tweet.entities;
-    // ['urls', 'youpi'].forEach((i: string): void => {
-    //   tweetEntities[i].forEach((e: any): void => { e.type = i; });
-    //   entities = entities.concat(tweetEntities[i]);
-    // });
+
+    if (tweet.entities.user_mentions) {
+      entities = entities.concat(
+        tweet.entities.user_mentions.map(
+          (e: ApiTweetEntityMentionType): TweetBodyEntity => (
+            {indices: e.indices, value: e, type: 'mention'}
+          )
+        )
+      );
+    }
   }
 
   const text = new Unicode(tweet.text);

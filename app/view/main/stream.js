@@ -11,7 +11,8 @@ import {bodyEntities} from 'app/util/tweet';
 
 import {tweet} from 'app/mock/tweet';
 
-console.log(tweet());
+console.log(tweet(1));
+console.log(tweet(0));
 
 const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
   const date = moment(new Date(tweet.created_at));
@@ -28,7 +29,13 @@ const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
           </Elink>
         );
 
+      case 'mention':
+        return (
+          <a>@{e.value.screen_name}</a>
+        );
+
       default:
+        unexpectedCase(e.type);
         return <span key={i}>dsd</span>;
     }
   });
@@ -58,7 +65,7 @@ export default (): Element<*> => (
     <header className={style.head}>TIMELINE</header>
     <ul>
       <li><Tweet tweet={tweet()} /></li>
-      <li><Tweet tweet={tweet()} /></li>
+      <li><Tweet tweet={tweet(1)} /></li>
     </ul>
   </div>
 );
