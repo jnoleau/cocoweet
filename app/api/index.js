@@ -22,13 +22,17 @@ export type ApiTweetEntityMentionType = {
   name: string, // The user full name
   indices: [number, number]
 }
-export type ApiTweetEntityType = ApiTweetEntityUrlType | ApiTweetEntityMentionType;
+export type ApiTweetEntityHashtagType = {
+  text: string,
+  indices: [number, number]
+}
 export type ApiTweetType = {
   id_str: string,
   created_at: string,
   entities: {
     urls: ?ApiTweetEntityUrlType[],
-    user_mentions: ?ApiTweetEntityMentionType[]
+    user_mentions: ?ApiTweetEntityMentionType[],
+    hashtags: ?ApiTweetEntityHashtagType[]
   },
   text: string,
   user: ApiTweetAuthorType

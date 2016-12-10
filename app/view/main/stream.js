@@ -11,7 +11,7 @@ import {bodyEntities} from 'app/util/tweet';
 
 import {tweet} from 'app/mock/tweet';
 
-console.log(tweet(1));
+console.log(tweet(2));
 console.log(tweet(0));
 
 const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
@@ -32,6 +32,11 @@ const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
       case 'mention':
         return (
           <a>@{e.value.screen_name}</a>
+        );
+
+      case 'hashtag':
+        return (
+          <a>#{e.value.text}</a>
         );
 
       default:
@@ -65,7 +70,7 @@ export default (): Element<*> => (
     <header className={style.head}>TIMELINE</header>
     <ul>
       <li><Tweet tweet={tweet()} /></li>
-      <li><Tweet tweet={tweet(1)} /></li>
+      <li><Tweet tweet={tweet(2)} /></li>
     </ul>
   </div>
 );

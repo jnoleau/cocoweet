@@ -1,5 +1,6 @@
 // @flow
-import type {ApiTweetType, ApiTweetEntityUrlType, ApiTweetEntityMentionType} from 'app/api/index';
+import type {ApiTweetType, ApiTweetEntityUrlType, ApiTweetEntityMentionType,
+  ApiTweetEntityHashtagType} from 'app/api/index';
 
 import TwitterText from 'twitter-text';
 import Unicode from 'app/util/unicode';
@@ -15,6 +16,10 @@ export type TweetBodyEntity = {
 } | {
   type: 'mention',
   value: ApiTweetEntityMentionType,
+  indices: [number, number]
+} | {
+  type: 'hashtag',
+  value: ApiTweetEntityHashtagType,
   indices: [number, number]
 };
 
@@ -50,6 +55,16 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
         tweet.entities.user_mentions.map(
           (e: ApiTweetEntityMentionType): TweetBodyEntity => (
             {indices: e.indices, value: e, type: 'mention'}
+          )
+        )
+      );
+    }
+
+    if (tweet.entities.hashtags) {
+      entities = entities.concat(
+        tweet.entities.hashtags.map(
+          (e: ApiTweetEntityHashtagType): TweetBodyEntity => (
+            {indices: e.indices, value: e, type: 'hashtag'}
           )
         )
       );
