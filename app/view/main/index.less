@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  :global {
+    .body {
+      display: flex;
+      flex: 1;
+      flex-direction: row;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      border-left: 1px solid #181a1f;
+      background: #282c34;
+      padding: 10px;
+    }
+
+    .footer {
+      border-top: 1px solid #181a1f;
+      line-height: 2.625em;
+    }
+  }
+}
