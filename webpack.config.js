@@ -31,13 +31,26 @@ export default {
         'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
         'postcss-loader'
       ]
+    },
+    {
+      test: /\.(png|jpg|jpeg|gif|woff|ico|json|svg)$/,
+      loader: 'file?name=[path][name].[ext]'
     }
     ]
   },
 
+  /* eslint-disable global-require */
   postcss: () => [
-    require('postcss-nested') // eslint-disable-line global-require
+    require('postcss-import')({
+      path: [
+        path.join(__dirname, 'app')
+      ]
+    }),
+    require('postcss-nested'),
+    require('postcss-animation'),
+    require('postcss-simple-vars')
   ],
+  /* eslint-enable global-require */
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
