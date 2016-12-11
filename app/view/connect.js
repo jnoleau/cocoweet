@@ -24,13 +24,15 @@ type ConnectType = {
   onConnect: Function
 };
 export default (props: ConnectType): Element<*> => (
-  <div className={style.connect}>
-    <img alt="logo" src={logo} />
-    {props.loading ? <Spinner /> :
-      <button onClick={props.onConnect}>
-        <TwitterIcon />
-        Signin with Twitter
-      </button>
-    }
+  <div className={style.container}>
+    <div className={style.connect}>
+      <img alt="logo" src={logo} />
+      {props.loading ? <Spinner /> :
+        <button onClick={props.onConnect}>
+          <TwitterIcon />
+          Signin with Twitter
+        </button>
+      }
+    </div>
   </div>
 );

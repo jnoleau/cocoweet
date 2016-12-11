@@ -7,7 +7,7 @@ import './root.less';
 
 export default (): Element<*> => (
   <div>
-    {/* <Connect loading={false} onConnect={(): void => console.log('ioi')} /> */}
-    <Main />
+    <Connect loading={false} onConnect={(): void => console.log('ioi')} />
+    {/* <Main /> */}
   </div>
 );

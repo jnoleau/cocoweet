@@ -9,11 +9,6 @@ import style from 'app/view/main/stream.less';
 import Elink from 'app/view/util/elink';
 import {bodyEntities} from 'app/util/tweet';
 
-import {tweet} from 'app/mock/tweet';
-
-console.log(tweet(2));
-console.log(tweet(0));
-
 const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
   const date = moment(new Date(tweet.created_at));
 
@@ -80,9 +75,7 @@ export default (): Element<*> => (
   <div className={style.stream}>
     <header className={style.head}>TIMELINE</header>
     <ul>
-      <li><Tweet tweet={tweet()} /></li>
-      <li><Tweet tweet={tweet(2)} /></li>
-      <li><Tweet tweet={tweet(5)} /></li>
+      {/* <li><Tweet tweet={tweet()} /></li> */}
     </ul>
   </div>
 );

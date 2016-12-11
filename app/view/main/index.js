@@ -13,7 +13,7 @@ export default (): Element<*> => (
       </div>
     </div>
     <div className="footer">
-      footer
+      soon something here !
     </div>
   </div>
 );

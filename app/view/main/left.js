@@ -18,39 +18,5 @@ const User = (props: ApiUserType): Element<*> => (
 export default (): Element<*> => (
   <div className={style.left}>
     <User {...u428333} />
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
-    <p>coucou</p>
   </div>
 );
