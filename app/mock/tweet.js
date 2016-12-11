@@ -19,7 +19,7 @@ function cloneArray<T>(els: Array<T>): Array<T> {
   return els.map((t: T): T => clone(t));
 }
 
-export function tweetArray(nb: number): ApiTweetType[] {
+export function tweetArray(nb: number, fakeId: string = false): ApiTweetType[] {
   let result = [];
 
   while (result.length < nb) {
@@ -28,10 +28,12 @@ export function tweetArray(nb: number): ApiTweetType[] {
 
   result = result.slice(0, nb);
 
-  result.forEach((t: ApiTweetType): void => {
-    const id = Math.round(Math.random() * 100000000);
-    t.id_str = `${id}`;
-  });
+  if (fakeId) {
+    result.forEach((t: ApiTweetType): void => {
+      const id = Math.round(Math.random() * 100000000);
+      t.id_str = `${id}`;
+    });
+  }
 
   return result;
 }

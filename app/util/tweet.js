@@ -1,6 +1,6 @@
 // @flow
 import type {ApiTweetType, ApiTweetEntityUrlType, ApiTweetEntityMentionType,
-  ApiTweetEntityHashtagType} from 'app/api/index';
+  ApiTweetEntityHashtagType, ApiTweetEntityMediaType} from 'app/api/index';
 
 import TwitterText from 'twitter-text';
 import Unicode from 'app/util/unicode';
@@ -20,6 +20,10 @@ export type TweetBodyEntity = {
 } | {
   type: 'hashtag',
   value: ApiTweetEntityHashtagType,
+  indices: [number, number]
+} | {
+  type: 'media',
+  value: ApiTweetEntityMediaType,
   indices: [number, number]
 };
 
@@ -65,6 +69,16 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
         tweet.entities.hashtags.map(
           (e: ApiTweetEntityHashtagType): TweetBodyEntity => (
             {indices: e.indices, value: e, type: 'hashtag'}
+          )
+        )
+      );
+    }
+
+    if (tweet.entities.media) {
+      entities = entities.concat(
+        tweet.entities.media.map(
+          (e: ApiTweetEntityMediaType): TweetBodyEntity => (
+            {indices: e.indices, value: e, type: 'media'}
           )
         )
       );

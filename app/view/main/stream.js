@@ -17,6 +17,7 @@ console.log(tweet(0));
 const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
   const date = moment(new Date(tweet.created_at));
 
+  let media: ?Element<any> = null;
   const bodyElements = bodyEntities(tweet).map((e: TweetBodyEntity, i: number): Element<any> => {
     switch (e.type) {
       case 'text':
@@ -31,19 +32,28 @@ const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
 
       case 'mention':
         return (
-          <a>@{e.value.screen_name}</a>
+          <a key={i}>@{e.value.screen_name}</a>
         );
 
       case 'hashtag':
         return (
-          <a>#{e.value.text}</a>
+          <a key={i}>#{e.value.text}</a>
+        );
+
+      case 'media':
+        media = <a className="media" style={{backgroundImage: `url(${e.value.media_url})`}} />;
+        return (
+          <span key={i} />
         );
 
       default:
         unexpectedCase(e.type);
-        return <span key={i}>dsd</span>;
+        return <span />;
     }
   });
+
+  const link: string =
+    `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 
   return (
     <div className={style.tweet}>
@@ -54,11 +64,12 @@ const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
           <span className="txt-small user-scname">@{tweet.user.screen_name}</span>
         </a>
         <time title={date.format('lll')} className="txt-small">
-          <Elink href="http://google.fr">{date.format('HH:mm')}</Elink>
+          <Elink href={link}>{date.format('HH:mm')}</Elink>
         </time>
       </header>
       <div className="tweet-body">
         {bodyElements}
+        {media}
       </div>
       <footer />
     </div>
@@ -71,6 +82,7 @@ export default (): Element<*> => (
     <ul>
       <li><Tweet tweet={tweet()} /></li>
       <li><Tweet tweet={tweet(2)} /></li>
+      <li><Tweet tweet={tweet(5)} /></li>
     </ul>
   </div>
 );

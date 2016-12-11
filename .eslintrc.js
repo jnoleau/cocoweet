@@ -30,5 +30,6 @@ module.exports = {
       'import/no-extraneous-dependencies': 'off',
       'flowtype/require-parameter-type': 'warn',
       'flowtype/require-return-type': ['warn', 'always', { 'annotateUndefined': 'always' }],
+      'jsx-a11y/anchor-has-content': 'off'
     }
 };
