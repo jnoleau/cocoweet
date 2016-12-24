@@ -1,5 +1,5 @@
 // @flow
-import type {State as S} from 'app/store/flow';
+import type {State as S} from 'app/store/state';
 import type {ApiUserType} from 'app/api';
 
 import store from 'app/store';

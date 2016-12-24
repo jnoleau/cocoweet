@@ -1,7 +1,7 @@
 /* @flow */
 import 'babel-polyfill';
 
-import type {State} from 'app/store/flow';
+import type {State} from 'app/store/state';
 
 import React, {Component, Element} from 'react';
 import {Provider, connect} from 'react-redux';

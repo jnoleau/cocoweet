@@ -1,5 +1,5 @@
 /* @flow */
-import type {State} from 'app/store/flow';
+import type {State} from 'app/store/state';
 
 import React, {Element} from 'react';
 import Connect from 'app/view/connect';

@@ -1,19 +1,18 @@
 // @flow
-import type {Store, State} from 'app/store/flow';
+import type {State} from 'app/store/state';
+import type {Store as StoreLib} from 'app/store/lib';
 
 import deepmerge from 'deepmerge';
 import {applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
 import {createStore} from 'app/store/lib';
+import {getInitial} from 'app/store/state';
 import storageMiddleware, {restore} from 'app/store/middleware.tostorage';
 
-const initialState: State = {
-  page: 'connect',
-  pageConnectLoading: false,
-  user: null,
-  number: 2
-};
+export type Store = StoreLib<State>;
+
 const savedState = restore('cocoweet');
+const initialState: State = getInitial(savedState !== null && savedState.user !== null);
 
 const logger = createLogger();
 const storage = storageMiddleware({
@@ -26,7 +25,7 @@ const storage = storageMiddleware({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // eslint-disable-line no-underscore-dangle, max-len
 const store: Store = createStore(
-  savedState ? deepmerge(initialState, restore('cocoweet')) : initialState,
+  savedState ? deepmerge(initialState, savedState) : initialState,
   composeEnhancers(applyMiddleware(logger, storage))
 );
 

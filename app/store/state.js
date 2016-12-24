@@ -1,6 +1,5 @@
 // @flow
 import type {ApiUserType} from 'app/api/index';
-import type {Store as S} from 'app/store/lib';
 
 export type State = {
   page: 'connect' | 'main',
@@ -8,4 +7,8 @@ export type State = {
   user: ?ApiUserType
 };
 
-export type Store = S<State>;
+export const getInitial = (loading: boolean = false): State => ({
+  page: 'connect',
+  pageConnectLoading: loading,
+  user: null
+});
