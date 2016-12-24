@@ -23,6 +23,7 @@ module.exports = {
       'max-len': ['error', 100],
       'no-param-reassign': ['error', { "props": false }],
       'no-duplicate-imports': 'off',
+      'no-bitwise': ['error', { 'allow': ['~'] }],
 
       'react/jsx-filename-extension': ['error', {'extensions': ['.js', '.jsx']}],
       'import/no-unresolved': ['error', {'ignore': [ 'app/' ]}],

@@ -9,6 +9,3 @@ export type State = {
 };
 
 export type Store = S<State>;
-
-export type Actuator =
-  (getState: () => State, setState: (newState: State, modifierName: ?string) => void) => Function;

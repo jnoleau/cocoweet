@@ -4,7 +4,7 @@ import type {State} from 'app/store/flow';
 import React, {Element} from 'react';
 import Connect from 'app/view/connect';
 import Main from 'app/view/main/index';
-import {signin} from 'app/store';
+import {signin} from 'app/store/action/account';
 import './root.less';
 
 
