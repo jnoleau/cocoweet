@@ -19,7 +19,7 @@ function cloneArray<T>(els: Array<T>): Array<T> {
   return els.map((t: T): T => clone(t));
 }
 
-export function tweetArray(nb: number, fakeId: string = false): ApiTweetType[] {
+export function tweetArray(nb: number, fakeId: boolean = false): ApiTweetType[] {
   let result = [];
 
   while (result.length < nb) {

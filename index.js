@@ -10,7 +10,7 @@ async function installExtensions(extensions) {
   if (process.env.NODE_ENV === 'development') {
     const installer = require('electron-devtools-installer'); // eslint-disable-line global-require
 
-    const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+    const forceDownload = true;
     for (const name of extensions) {
       try {
         await installer.default(installer[name], forceDownload);
@@ -21,7 +21,7 @@ async function installExtensions(extensions) {
 
 app.on('ready', async () => {
   await installExtensions([
-    'REACT_DEVELOPER_TOOLS'
+    'REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS'
   ]);
 
   mainWindow = new BrowserWindow({
