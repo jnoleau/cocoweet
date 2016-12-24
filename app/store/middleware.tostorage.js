@@ -1,7 +1,7 @@
 export default (options) => {
   const {key, slicer, actions} = options;
 
-  return ({getState}) => (next) => (action) => {
+  const middleware = ({getState}) => (next) => (action) => {
     const result = next(action);
 
     if (~actions.indexOf(action.type)) {
@@ -10,8 +10,9 @@ export default (options) => {
 
     return result;
   };
-};
 
-export function restore(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
+  return {
+    restore: () => JSON.parse(localStorage.getItem(key)),
+    middleware
+  };
+};
