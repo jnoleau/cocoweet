@@ -9,6 +9,7 @@
 ../node_modules/react-redux
 ../node_modules/redux
 ../node_modules/redux-logger
+../node_modules/superagent
 ../node_modules/twitter-text
 
 [libs]

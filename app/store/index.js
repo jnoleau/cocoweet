@@ -14,13 +14,13 @@ export type Store = StoreLib<State>;
 const storage = storageMiddleware({
   key: 'cocoweet',
   slicer: (state: State): Object => ({
-    user: state.user
+    credentials: state.credentials
   }),
-  actions: ['SIGNIN_FINISH']
+  actions: ['SIGNIN_FINISH', 'INTERNAL_INIT_CREDENTIALS_FAIL']
 });
 
 const savedState = storage.restore();
-const initialState: State = getInitial(savedState !== null && savedState.user !== null);
+const initialState: State = getInitial();
 
 const logger = createLogger();
 

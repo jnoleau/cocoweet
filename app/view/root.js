@@ -11,9 +11,9 @@ import './root.less';
 export default ({state}: {state: State}): Element<*> => (
   <div>
     {
-      state.page === 'connect' ?
+      state.page === 'connect' || !state.user ?
         <Connect loading={state.pageConnectLoading} onConnect={signin} />
-        : <Main />
+        : <Main me={state.user} />
     }
   </div>
 );

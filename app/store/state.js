@@ -1,14 +1,18 @@
 // @flow
-import type {ApiUserType} from 'app/api/index';
+import type {ApiUserType, ApiCredentialsType} from 'app/api/index';
 
 export type State = {
+  initialized: boolean,
   page: 'connect' | 'main',
   pageConnectLoading: boolean,
-  user: ?ApiUserType
+  user: ?ApiUserType,
+  credentials: ?ApiCredentialsType
 };
 
-export const getInitial = (loading: boolean = false): State => ({
+export const getInitial = (): State => ({
+  initialized: false,
   page: 'connect',
-  pageConnectLoading: loading,
-  user: null
+  pageConnectLoading: true,
+  user: null,
+  credentials: null
 });

@@ -1,13 +1,15 @@
-/* @flow */
+// @flow
+import type {ApiUserType} from 'app/api';
+
 import React, {Element} from 'react';
 import Left from 'app/view/main/left';
 import Stream from 'app/view/main/stream';
 import style from 'app/view/main/index.less';
 
-export default (): Element<*> => (
+export default ({me}: {me: ApiUserType}): Element<*> => (
   <div className={style.main}>
     <div className="body">
-      <Left />
+      <Left me={me} />
       <div className="right">
         <Stream />
       </div>

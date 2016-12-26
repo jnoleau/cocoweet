@@ -8,6 +8,7 @@ import {Provider, connect} from 'react-redux';
 import {render} from 'react-dom';
 import Root from 'app/view/root';
 import store from 'app/store';
+import {initCredentials} from 'app/store/action/account';
 
 // just for hot reloading purpose bug on React if only stateless
 class App extends Component { // eslint-disable-line react/prefer-stateless-function
@@ -25,3 +26,5 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+if (!store.getState().initialized) initCredentials();

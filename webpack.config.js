@@ -62,7 +62,10 @@ export default {
 
   resolve: {
     alias: {
-      app: path.resolve('./app')
+      app: path.resolve('./app'),
+      inherits: 'inherits/inherits_browser.js',
+      superagent: 'superagent/lib/client',
+      emitter: 'component-emitter'
     }
   },
 
