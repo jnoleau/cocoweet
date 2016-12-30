@@ -2,6 +2,12 @@
 import Request from 'superagent';
 import Oauth from 'app/api/lib/oauth';
 import Const from 'app/const';
+import MockRestApi from 'app/mock/api';
+import * as Log from 'app/util/log';
+
+const apiMocked = [
+  '/1.1/account/verify_credentials.json'
+];
 
 export type ApiCredentialsType = {
   key: string,
@@ -128,6 +134,13 @@ async function signRequest<P: Object>(
  * @throws API_ERROR
  */
 export async function get(url: string, params: Object, creds: ?ApiCredentialsType): Promise<*> {
+  if (~apiMocked.indexOf(url)) {
+    const result = await MockRestApi[url](params);
+    Log.info('Mock call', url, params, result);
+
+    return result;
+  }
+
   const finalUrl = `https://api.twitter.com${url}`;
   const promise = creds ?
     signRequest('GET', finalUrl, params, Const.TWITTER_CONSUMER_KEY, creds.key, creds.secret)
@@ -196,4 +209,8 @@ export async function oauthAccessToken(
 
 export function accountVerifyCredentials(creds: ApiCredentialsType): Promise<ApiUserType> {
   return get('/1.1/account/verify_credentials.json', {}, creds);
+}
+
+export function homeTimeline(creds: ApiCredentialsType, count: number): Promise<ApiTweetType[]> {
+  return get('/1.1/statuses/home_timeline.json', {count}, creds);
 }

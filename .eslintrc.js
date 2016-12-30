@@ -29,6 +29,7 @@ module.exports = {
       'import/no-unresolved': ['error', {'ignore': [ 'app/' ]}],
       'import/extensions': 'off',
       'import/no-extraneous-dependencies': 'off',
+      'import/prefer-default-export': 'off',
       'flowtype/require-parameter-type': 'warn',
       'flowtype/require-return-type': ['warn', 'always', { 'annotateUndefined': 'always' }],
       'jsx-a11y/anchor-has-content': 'off'

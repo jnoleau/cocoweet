@@ -4,6 +4,7 @@ import type {ApiUserType, ApiCredentialsType} from 'app/api';
 import * as Api from 'app/api';
 import Const from 'app/const';
 import store from 'app/store';
+import {loadTimeline} from 'app/store/action/stream';
 import * as Log from 'app/util/log';
 
 
@@ -73,13 +74,17 @@ export async function initCredentials(): Promise<void> {
       const user: ApiUserType = await Api.accountVerifyCredentials(credentials);
       store.alterState({
         user,
-        page: 'main'
+        page: 'main',
+        initialized: true
       }, 'INTERNAL_INIT_CREDENTIALS_FINISH');
+
+      loadTimeline();
     } catch (e) {
       Log.warn(e);
       store.alterState({
         pageConnectLoading: false,
-        credentials: null
+        credentials: null,
+        initialized: true
       }, 'INTERNAL_INIT_CREDENTIALS_FAIL');
     }
   } else {

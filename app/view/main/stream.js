@@ -1,19 +1,22 @@
 /* @flow */
 import type {ApiTweetType} from 'app/api/index';
+import type {RE} from 'app/flow/misc';
+import type {TweetStreamType, State} from 'app/store/state';
 import type {TweetBodyEntity} from 'app/util/tweet';
-import {unexpectedCase} from 'app/flow/misc';
 
-import React, {Element} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import moment from 'moment';
+import {unexpectedCase} from 'app/flow/misc';
 import style from 'app/view/main/stream.less';
 import Elink from 'app/view/util/elink';
 import {bodyEntities} from 'app/util/tweet';
 
-const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
+const Tweet = ({tweet}: {tweet: ApiTweetType}): RE => {
   const date = moment(new Date(tweet.created_at));
 
-  let media: ?Element<any> = null;
-  const bodyElements = bodyEntities(tweet).map((e: TweetBodyEntity, i: number): Element<any> => {
+  let media: ?RE = null;
+  const bodyElements = bodyEntities(tweet).map((e: TweetBodyEntity, i: number): RE => {
     switch (e.type) {
       case 'text':
         return <span key={i}>{e.value}</span>;
@@ -71,11 +74,28 @@ const Tweet = ({tweet}: {tweet: ApiTweetType}): Element<*> => {
   );
 };
 
-export default (): Element<*> => (
+type ListPropsType = {tweets: ApiTweetType[], nbDisplayed: number};
+const List = ({tweets, nbDisplayed}: ListPropsType): RE => {
+  const displayed: ApiTweetType[] = tweets.slice(0, nbDisplayed);
+
+  return (
+    <ul>
+      {(displayed.map((tweet: ApiTweetType): RE => (
+        <li key={tweet.id_str}>
+          <Tweet tweet={tweet} />
+        </li>
+        )))}
+    </ul>
+  );
+};
+
+type StreamPropsType = {stream: TweetStreamType};
+const Stream = ({stream}: StreamPropsType): RE => (
   <div className={style.stream}>
     <header className={style.head}>TIMELINE</header>
-    <ul>
-      {/* <li><Tweet tweet={tweet()} /></li> */}
-    </ul>
+    <List nbDisplayed={stream.nbDisplayed} tweets={stream.tweets} />
   </div>
 );
+
+const Timeline = connect((state: State): StreamPropsType => ({stream: state.timeline}))(Stream);
+export default Timeline;
