@@ -43,6 +43,7 @@
     "react-redux": "4.4.6",
     "redux": "3.6.0",
     "redux-logger": "2.7.4",
+    "redux-simplux": "1.0.4",
     "style-loader": "0.13.1",
     "superagent": "3.3.1",
     "twitter-text": "1.14.1",

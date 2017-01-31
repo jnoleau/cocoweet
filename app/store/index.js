@@ -5,7 +5,7 @@ import type {Store as StoreLib} from 'app/store/lib';
 import deepmerge from 'deepmerge';
 import {applyMiddleware, compose} from 'redux';
 import createLogger from 'redux-logger';
-import {createStore} from 'app/store/lib';
+import {createStore} from 'redux-simplux';
 import {getInitial} from 'app/store/state';
 import storageMiddleware from 'app/store/middleware.tostorage';
 

@@ -9,10 +9,12 @@
 ../node_modules/react-redux
 ../node_modules/redux
 ../node_modules/redux-logger
+../node_modules/redux-simplux
 ../node_modules/superagent
 ../node_modules/twitter-text
 
 [libs]
+../node_modules/redux-simplux/flow-typed
 
 [options]
 esproposal.class_static_fields=enable
