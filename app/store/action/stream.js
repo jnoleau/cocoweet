@@ -14,7 +14,7 @@ export async function loadTimeline(): Promise<void> {
 
     const tweets: ApiTweetType[] = await Api.homeTimeline(creds, 200);
 
-    store.alterState({
+    store.setState({
       timeline: {
         ...timeline,
         tweets

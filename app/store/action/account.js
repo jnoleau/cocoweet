@@ -37,7 +37,7 @@ function extAuthenticate(authUrl: string): Promise<string> {
 }
 
 export async function signin(): Promise<ApiUserType> {
-  store.alterState({
+  store.setState({
     pageConnectLoading: true
   }, 'SIGNIN_START');
 
@@ -48,7 +48,7 @@ export async function signin(): Promise<ApiUserType> {
 
     const user: ApiUserType = await Api.accountVerifyCredentials(atoken);
 
-    store.alterState({
+    store.setState({
       user,
       credentials: atoken,
       page: 'main'
@@ -57,7 +57,7 @@ export async function signin(): Promise<ApiUserType> {
     return user;
   } catch (e) {
     Log.warn(e);
-    store.alterState({
+    store.setState({
       pageConnectLoading: false
     }, 'SIGNIN_FAIL');
   }
@@ -72,7 +72,7 @@ export async function initCredentials(): Promise<void> {
   if (credentials) {
     try {
       const user: ApiUserType = await Api.accountVerifyCredentials(credentials);
-      store.alterState({
+      store.setState({
         user,
         page: 'main',
         initialized: true
@@ -81,14 +81,14 @@ export async function initCredentials(): Promise<void> {
       loadTimeline();
     } catch (e) {
       Log.warn(e);
-      store.alterState({
+      store.setState({
         pageConnectLoading: false,
         credentials: null,
         initialized: true
       }, 'INTERNAL_INIT_CREDENTIALS_FAIL');
     }
   } else {
-    store.alterState({
+    store.setState({
       pageConnectLoading: false,
       initialized: true
     }, 'INIT_CREDENTIALS_SYNC');

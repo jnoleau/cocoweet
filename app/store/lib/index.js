@@ -6,8 +6,7 @@ export type Action = string | {type: string};
 
 export type Store<S: Object> = {
   getState: () => S,
-  setState: (state: S, action: ?Action) => void,
-  alterState: (statePart: $Shape<S>, action: ?Action) => void,
+  setState: (statePart: $Shape<S>, action: ?Action) => void,
   reduxStore: any
 }
 
@@ -29,21 +28,18 @@ export function createStore<S: Object>(initialState: S, reduxEnhancer: any): Sto
 
   const getState = reduxStore.getState;
 
-  const setState = (state: S, action: ?Action): void => {
-    reduxStore.dispatch(getReduxAction(state, action));
-  };
-
-  const alterState = (statePart: $Shape<S>, action: ?Action): void => {
-    setState({
+  const setState = (statePart: $Shape<S>, action: ?Action): void => {
+    const newState: S = {
       ...getState(),
       ...statePart
-    }, action);
+    };
+
+    reduxStore.dispatch(getReduxAction(newState, action));
   };
 
   return {
     reduxStore,
     getState,
-    setState,
-    alterState
+    setState
   };
 }

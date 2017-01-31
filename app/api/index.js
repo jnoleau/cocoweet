@@ -6,7 +6,8 @@ import MockRestApi from 'app/mock/api';
 import * as Log from 'app/util/log';
 
 const apiMocked = [
-  '/1.1/account/verify_credentials.json'
+  '/1.1/account/verify_credentials.json',
+  '/1.1/statuses/home_timeline.json'
 ];
 
 export type ApiCredentialsType = {
