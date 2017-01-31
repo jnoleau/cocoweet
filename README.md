@@ -1,2 +1,1 @@
-# cocoweet
-A realtime client for Twitter
+https://jnoleau.github.io/cocoweet/
