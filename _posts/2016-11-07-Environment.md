@@ -1,6 +1,7 @@
 ---
 layout: post
 title: The environment
+author: jnoleau
 ---
 
 The first step : set a working dev environment. We want to be able to open a window in Electron,

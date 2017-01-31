@@ -28,6 +28,10 @@ footer-links:
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
+authors:
+  jnoleau:
+    name: Julien Noleau
+    link: https://twitter.com/jnoleau
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
@@ -53,7 +57,7 @@ baseurl: "/cocoweet"
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
-version: v1.2.0
+version: v3.3.0
 
 # Jekyll 3 now only supports Kramdown for Markdown
 kramdown:
