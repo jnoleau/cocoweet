@@ -2,6 +2,16 @@
 layout: default
 ---
 {% assign author = site.authors[page.author] %}
+<div class="post-share">
+  <span class="share-title">SHARE</span>
+  <ul>
+    <li><span class='st_twitter_large' st_title="{{ page.title }}" displayText='Tweet'></span></li>
+    <li><span class='st_facebook_large' displayText='Facebook'></span></li>
+  </ul>
+</div>
+
+<script type="text/javascript" id="st_insights_js" src="https://ws.sharethis.com/button/buttons.js?publisher=36f7862a-ed19-4896-93ab-4e92a79b8c35"></script>
+<script type="text/javascript">stLight.options({publisher: "36f7862a-ed19-4896-93ab-4e92a79b8c35", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <article class="post">
   <h1>{{ page.title }}</h1>
 
@@ -11,6 +21,12 @@ layout: default
 
   <div class="entry">
     {{ content }}
+  </div>
+
+  <div class="share-bottom">
+    <span class='st_facebook_hcount' displayText='Facebook'></span>
+    <span class='st_twitter_hcount' displayText='Tweet'></span>
+    <span class='st_linkedin_hcount' displayText='LinkedIn'></span>
   </div>
 
   {% include disqus.html %}
