@@ -59,7 +59,7 @@ export type ApiTweetEntityMediaType = {
   type: 'photo',
   indices: [number, number]
 }
-export type ApiTweetType = {
+type ApiTweetCommonType = {
   id_str: string,
   created_at: string,
   entities: {
@@ -68,8 +68,14 @@ export type ApiTweetType = {
     hashtags?: ApiTweetEntityHashtagType[],
     media?: ApiTweetEntityMediaType[]
   },
-  text: string,
   user: ApiTweetAuthorType
+}
+// export type ApiTweetType = ApiTweetCommonType & {
+//   text: string
+// };
+
+export type ApiTweetType = ApiTweetCommonType & {
+  full_text: string
 };
 
 
@@ -212,6 +218,7 @@ export function accountVerifyCredentials(creds: ApiCredentialsType): Promise<Api
   return get('/1.1/account/verify_credentials.json', {}, creds);
 }
 
-export function homeTimeline(creds: ApiCredentialsType, count: number): Promise<ApiTweetType[]> {
-  return get('/1.1/statuses/home_timeline.json', {count}, creds);
+export function homeTimeline(creds: ApiCredentialsType, count: number
+  ): Promise<ApiTweetType[]> {
+  return get('/1.1/statuses/home_timeline.json', {count, tweet_mode: 'extended'}, creds);
 }

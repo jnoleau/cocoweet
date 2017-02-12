@@ -85,7 +85,7 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
     }
   }
 
-  const text = new Unicode(tweet.text);
+  const text = new Unicode(tweet.full_text);
 
   if (entities.length === 0) {
     return [{

@@ -109,7 +109,7 @@ class StreamList extends Component {
     const {from, to} = this.state;
     const displayed: ApiTweetType[] = tweets.slice(from, to);
 
-    window.setFromTo = (from, to) => this.setState({from, to});
+    window.setFromTo = (from, to): void => this.setState({from, to});
 
     return (
       <ul ref={(node: any): any => { this.node = node; return node; }} onScroll={this.onScroll}>
