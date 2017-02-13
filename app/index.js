@@ -1,6 +1,4 @@
 /* @flow */
-import 'babel-polyfill';
-
 import type {State} from 'app/store/state';
 
 import React, {Component, Element} from 'react';
