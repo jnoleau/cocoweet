@@ -12,6 +12,7 @@
 ../node_modules/redux-simplux
 ../node_modules/superagent
 ../node_modules/twitter-text
+../node_modules/@kadira/storybook
 
 [libs]
 ../node_modules/redux-simplux/flow-typed

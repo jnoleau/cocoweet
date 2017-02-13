@@ -6,7 +6,9 @@
     "start": "NODE_ENV=development electron -r babel-register -r babel-polyfill ./index",
     "server": "node -r babel-register server.js",
     "lintjs": "eslint app",
-    "lintcss": "stylelint app/**/*.less"
+    "lintcss": "stylelint app/**/*.less",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -61,6 +63,7 @@
     "eslint-plugin-react": "6.5.0",
     "flow-bin": "0.36.0",
     "stylelint": "7.5.0",
-    "stylelint-config-standard": "14.0.0"
+    "stylelint-config-standard": "14.0.0",
+    "@kadira/storybook": "^2.21.0"
   }
 }
