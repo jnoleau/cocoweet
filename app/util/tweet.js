@@ -85,7 +85,10 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
     }
   }
 
-  const text = new Unicode(tweet.full_text);
+  const rawText = tweet.full_text ? tweet.full_text : // eslint-disable-line no-nested-ternary
+    (tweet.extended_tweet ? tweet.extended_tweet.full_text : tweet.text);
+
+  const text: string = new Unicode(rawText);
 
   if (entities.length === 0) {
     return [{
@@ -135,3 +138,9 @@ export const bodyEntities = (tweet: ApiTweetType): TweetBodyEntity[] => {
 };
 
 export const bodyLength: (text: string) => number = TwitterText.getTweetLength;
+
+export function displayableRange(tweet: ApiTweetType): [number, number] {
+  return tweet.extended_tweet ? // eslint-disable-line no-nested-ternary
+    tweet.extended_tweet.display_text_range :
+    (tweet.display_text_range ? tweet.display_text_range : [0, 9999]);
+}

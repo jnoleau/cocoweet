@@ -1,6 +1,6 @@
 // @flow
 import type {ApiTweetType} from 'app/api/index';
-import tweetExtendedBig from 'app/mock/samples/initial/extended_big';
+import tweetMock from 'app/mock/samples/compat/simple';
 
 function clone<T>(t: T): T {
   if (typeof t === 'object') return {...t};
@@ -16,7 +16,7 @@ export function tweetArray(nb: number, fakeId: boolean = false): ApiTweetType[] 
   let result = [];
 
   while (result.length < nb) {
-    result.push(clone(tweetExtendedBig));
+    result.push(clone(tweetMock));
   }
 
   result = result.slice(0, nb);

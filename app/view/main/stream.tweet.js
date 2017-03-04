@@ -5,47 +5,57 @@ import type {TweetBodyEntity} from 'app/util/tweet';
 
 import React from 'react';
 import moment from 'moment';
-import {unexpectedCase} from 'app/flow/misc';
+import {never} from 'app/flow/misc';
 import style from 'app/view/main/stream.less';
 import Elink from 'app/view/util/elink';
-import {bodyEntities} from 'app/util/tweet';
+import {bodyEntities, displayableRange} from 'app/util/tweet';
+
+const Entity = ({entity}: {entity: TweetBodyEntity}): ?RE => {
+  switch (entity.type) {
+    case 'text':
+      return <span>{entity.value}</span>;
+
+    case 'media':
+      return (
+        <Elink href={entity.value.expanded_url ? entity.value.expanded_url : entity.value.url}>
+          {entity.value.display_url}
+        </Elink>
+      );
+
+    case 'url':
+      return (
+        <Elink href={entity.value.expanded_url ? entity.value.expanded_url : entity.value.url}>
+          {entity.value.display_url}
+        </Elink>
+      );
+
+    case 'mention':
+      return (
+        <a>@{entity.value.screen_name}</a>
+      );
+
+    case 'hashtag':
+      return (
+        <a>#{entity.value.text}</a>
+      );
+
+    default:
+      never(entity.type);
+      return null;
+  }
+};
 
 const StreamTweet = ({tweet}: {tweet: ApiTweetType}): RE => {
   const date = moment(new Date(tweet.created_at));
 
+  const range = displayableRange(tweet);
+
+  console.log(bodyEntities(tweet), tweet);
+
   let media: ?RE = null;
-  const bodyElements = bodyEntities(tweet).map((e: TweetBodyEntity, i: number): RE => {
-    switch (e.type) {
-      case 'text':
-        return <span key={i}>{e.value}</span>;
-
-      case 'url':
-        return (
-          <Elink key={i} href={e.value.expanded_url ? e.value.expanded_url : e.value.url}>
-            {e.value.display_url}
-          </Elink>
-        );
-
-      case 'mention':
-        return (
-          <a key={i}>@{e.value.screen_name}</a>
-        );
-
-      case 'hashtag':
-        return (
-          <a key={i}>#{e.value.text}</a>
-        );
-
-      case 'media':
-        media = <a className="media" style={{backgroundImage: `url(${e.value.media_url})`}} />;
-        return (
-          <span key={i} />
-        );
-
-      default:
-        unexpectedCase(e.type);
-        return <span />;
-    }
+  const bodyElements = bodyEntities(tweet).map((e: TweetBodyEntity, i: number): ?RE => {
+    const inRange: boolean = (range[0] <= e.indices[1] && range[1] >= e.indices[0]);
+    return inRange ? <Entity key={i} entity={e} /> : null;
   });
 
   const link: string =

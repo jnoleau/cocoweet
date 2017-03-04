@@ -59,23 +59,29 @@ export type ApiTweetEntityMediaType = {
   type: 'photo',
   indices: [number, number]
 }
+type ApiTweetEntities = {
+  urls?: ApiTweetEntityUrlType[],
+  user_mentions?: ApiTweetEntityMentionType[],
+  hashtags?: ApiTweetEntityHashtagType[],
+  media?: ApiTweetEntityMediaType[]
+};
 type ApiTweetCommonType = {
   id_str: string,
   created_at: string,
-  entities: {
-    urls?: ApiTweetEntityUrlType[],
-    user_mentions?: ApiTweetEntityMentionType[],
-    hashtags?: ApiTweetEntityHashtagType[],
-    media?: ApiTweetEntityMediaType[]
-  },
+  entities: ApiTweetEntities,
   user: ApiTweetAuthorType
 }
-// export type ApiTweetType = ApiTweetCommonType & {
-//   text: string
-// };
 
 export type ApiTweetType = ApiTweetCommonType & {
-  full_text: string
+  full_text?: string, // new
+  display_text_range?: [number, number], // new,
+
+  text?: string, // compat
+  extended_tweet?: { // compat extended
+    display_text_range: [number, number],
+    full_text: string,
+    entities: ApiTweetEntities
+  }
 };
 
 

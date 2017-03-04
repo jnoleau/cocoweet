@@ -1,82 +1,49 @@
+/* eslint-disable */
+// @flow
 export default {
-  "created_at": "Thu Jun 16 17:33:23 +0000 2016",
-  "id": 743496707711733760,
-  "id_str": "743496707711733760",
-  "full_text": "@twitter @twitterdev has more details about these changes at https://t.co/ZnXoRQy8mK.  Thanks for making @twitter more expressive! https://t.co/AWmiH870F7",
+  "created_at": "Thu Jun 16 16:24:44 +0000 2016",
+  "id": 743479431658758100,
+  "id_str": "743479431658758145",
+  "full_text": "@TwitterDev I'm really excited for this change! https://t.co/VnJMDg3cbS",
   "truncated": false,
   "display_text_range": [
-    9,
-    130
+    12,
+    47
   ],
   "entities": {
     "hashtags": [],
     "symbols": [],
     "user_mentions": [
       {
-        "screen_name": "twitter",
-        "name": "Twitter",
-        "id": 783214,
-        "id_str": "783214",
-        "indices": [
-          0,
-          8
-        ]
-      },
-      {
         "screen_name": "TwitterDev",
         "name": "TwitterDev",
         "id": 2244994945,
         "id_str": "2244994945",
         "indices": [
-          9,
-          20
-        ]
-      },
-      {
-        "screen_name": "twitter",
-        "name": "Twitter",
-        "id": 783214,
-        "id_str": "783214",
-        "indices": [
-          105,
-          113
+          0,
+          11
         ]
       }
     ],
-    "urls": [
-      {
-        "url": "https://t.co/ZnXoRQy8mK",
-        "expanded_url": "https://blog.twitter.com/2016/doing-more-with-140-characters",
-        "display_url": "blog.twitter.com/2016/doing-mor…",
-        "indices": [
-          61,
-          84
-        ]
-      }
-    ],
+    "urls": [],
     "media": [
       {
-        "id": 743495942192566272,
-        "id_str": "743495942192566272",
+        "id": 743479379079004200,
+        "id_str": "743479379079004160",
         "indices": [
-          131,
-          154
+          48,
+          71
         ],
-        "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
-        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
-        "url": "https://t.co/AWmiH870F7",
-        "display_url": "pic.twitter.com/AWmiH870F7",
-        "expanded_url": "http://twitter.com/beyond_oneforty/status/743496707711733760/photo/1",
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFejl_VAAAo9Xk.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFejl_VAAAo9Xk.jpg",
+        "url": "https://t.co/VnJMDg3cbS",
+        "display_url": "pic.twitter.com/VnJMDg3cbS",
+        "expanded_url": "http://twitter.com/beyond_oneforty/status/743479431658758145/photo/1",
         "type": "photo",
         "sizes": {
-          "small": {
-            "w": 340,
-            "h": 255,
-            "resize": "fit"
-          },
           "medium": {
             "w": 480,
-            "h": 360,
+            "h": 268,
             "resize": "fit"
           },
           "thumb": {
@@ -86,7 +53,12 @@ export default {
           },
           "large": {
             "w": 480,
-            "h": 360,
+            "h": 268,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 340,
+            "h": 190,
             "resize": "fit"
           }
         }
@@ -96,27 +68,22 @@ export default {
   "extended_entities": {
     "media": [
       {
-        "id": 743495942192566272,
-        "id_str": "743495942192566272",
+        "id": 743479379079004200,
+        "id_str": "743479379079004160",
         "indices": [
-          131,
-          154
+          48,
+          71
         ],
-        "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
-        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFtnsZVEAAE4oA.jpg",
-        "url": "https://t.co/AWmiH870F7",
-        "display_url": "pic.twitter.com/AWmiH870F7",
-        "expanded_url": "http://twitter.com/beyond_oneforty/status/743496707711733760/photo/1",
+        "media_url": "http://pbs.twimg.com/tweet_video_thumb/ClFejl_VAAAo9Xk.jpg",
+        "media_url_https": "https://pbs.twimg.com/tweet_video_thumb/ClFejl_VAAAo9Xk.jpg",
+        "url": "https://t.co/VnJMDg3cbS",
+        "display_url": "pic.twitter.com/VnJMDg3cbS",
+        "expanded_url": "http://twitter.com/beyond_oneforty/status/743479431658758145/photo/1",
         "type": "animated_gif",
         "sizes": {
-          "small": {
-            "w": 340,
-            "h": 255,
-            "resize": "fit"
-          },
           "medium": {
             "w": 480,
-            "h": 360,
+            "h": 268,
             "resize": "fit"
           },
           "thumb": {
@@ -126,20 +93,25 @@ export default {
           },
           "large": {
             "w": 480,
-            "h": 360,
+            "h": 268,
+            "resize": "fit"
+          },
+          "small": {
+            "w": 340,
+            "h": 190,
             "resize": "fit"
           }
         },
         "video_info": {
           "aspect_ratio": [
-            4,
-            3
+            120,
+            67
           ],
           "variants": [
             {
               "bitrate": 0,
               "content_type": "video/mp4",
-              "url": "https://pbs.twimg.com/tweet_video/ClFtnsZVEAAE4oA.mp4"
+              "url": "https://pbs.twimg.com/tweet_video/ClFejl_VAAAo9Xk.mp4"
             }
           ]
         }
@@ -147,11 +119,11 @@ export default {
     ]
   },
   "source": "&lt;a href=\"http://twitter.com\" rel=\"nofollow\"&gt;Twitter Web Client&lt;/a&gt;",
-  "in_reply_to_status_id": 735108260718469121,
-  "in_reply_to_status_id_str": "735108260718469121",
-  "in_reply_to_user_id": 783214,
-  "in_reply_to_user_id_str": "783214",
-  "in_reply_to_screen_name": "twitter",
+  "in_reply_to_status_id": 735111578660438000,
+  "in_reply_to_status_id_str": "735111578660438017",
+  "in_reply_to_user_id": 2244994945,
+  "in_reply_to_user_id_str": "2244994945",
+  "in_reply_to_screen_name": "TwitterDev",
   "user": {
     "id": 3883872981,
     "id_str": "3883872981",
@@ -167,7 +139,7 @@ export default {
     },
     "protected": true,
     "followers_count": 51,
-    "friends_count": 2,
+    "friends_count": 0,
     "listed_count": 0,
     "created_at": "Tue Oct 06 21:08:37 +0000 2015",
     "favourites_count": 1,
@@ -175,7 +147,7 @@ export default {
     "time_zone": null,
     "geo_enabled": false,
     "verified": false,
-    "statuses_count": 11,
+    "statuses_count": 10,
     "lang": "en",
     "contributors_enabled": false,
     "is_translator": false,
@@ -184,8 +156,8 @@ export default {
     "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
     "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
     "profile_background_tile": false,
-    "profile_image_url": "http://pbs.twimg.com/profile_images/743489433861685249/VOcKbH8Z_normal.jpg",
-    "profile_image_url_https": "https://pbs.twimg.com/profile_images/743489433861685249/VOcKbH8Z_normal.jpg",
+    "profile_image_url": "http://pbs.twimg.com/profile_images/651506565225271296/PMEWfvS__normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/651506565225271296/PMEWfvS__normal.jpg",
     "profile_link_color": "0084B4",
     "profile_sidebar_border_color": "C0DEED",
     "profile_sidebar_fill_color": "DDEEF6",
@@ -204,7 +176,7 @@ export default {
   "contributors": null,
   "is_quote_status": false,
   "retweet_count": 0,
-  "favorite_count": 0,
+  "favorite_count": 1,
   "favorited": false,
   "retweeted": false,
   "possibly_sensitive": false,
